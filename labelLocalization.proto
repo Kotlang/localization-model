@@ -9,12 +9,20 @@ option go_package = "github.com/kotlang/localizationGo/generated";
 package localization;
 
 service LabelLocalization {
-    rpc GetLabels(GetLabelsRequest) returns (LocalizedLabelsResponse) {}
+    rpc GetAllLabelsByLanguage(GetAllLabelsByLanguageRequest) returns (LocalizedLabelsResponse) {}
+    rpc GetLabel(GetLabelRequest) returns (LocalizedLabel) {}
     rpc GetCurrentVersion(GetCurrentVersionRequest) returns (GetCurrentVersionResponse) {}
 }
 
-message GetLabelsRequest {
+message GetAllLabelsByLanguageRequest {
     string language = 1;
+    string domain = 2;
+}
+
+message GetLabelRequest {
+    string language = 1;
+    string key = 2;
+    string domain = 3;
 }
 
 message LocalizedLabelsResponse {
@@ -27,6 +35,8 @@ message LocalizedLabel {
 }
 
 message GetCurrentVersionRequest {
+    string domain = 1;
+    string language = 2;
 }
 
 message GetCurrentVersionResponse {
