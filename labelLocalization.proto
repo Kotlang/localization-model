@@ -1,0 +1,34 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "com.kotlang.localization";
+option java_outer_classname = "LabelLocalizationInternal";
+
+option go_package = "github.com/kotlang/localizationGo/generated";
+
+package localization;
+
+service LabelLocalization {
+    rpc GetLabels(GetLabelsRequest) returns (LocalizedLabelsResponse) {}
+    rpc GetCurrentVersion(GetCurrentVersionRequest) returns (GetCurrentVersionResponse) {}
+}
+
+message GetLabelsRequest {
+    string language = 1;
+}
+
+message LocalizedLabelsResponse {
+    repeated LocalizedLabel localizedLabelList = 1;
+}
+
+message LocalizedLabel {
+    string key = 1;
+    string value = 2;
+}
+
+message GetCurrentVersionRequest {
+}
+
+message GetCurrentVersionResponse {
+    string version = 1;
+}
