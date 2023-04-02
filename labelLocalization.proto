@@ -12,6 +12,7 @@ service LabelLocalization {
     rpc GetAllLabelsByLanguage(GetAllLabelsByLanguageRequest) returns (LocalizedLabelsResponse) {}
     rpc GetLabel(GetLabelRequest) returns (LocalizedLabel) {}
     rpc GetCurrentVersion(GetCurrentVersionRequest) returns (GetCurrentVersionResponse) {}
+    rpc GetAllLanguages(GetAllLanguagesRequest) returns (GetAllLanguagesResponse) {}
 }
 
 message GetAllLabelsByLanguageRequest {
@@ -41,4 +42,17 @@ message GetCurrentVersionRequest {
 
 message GetCurrentVersionResponse {
     string version = 1;
+}
+
+message GetAllLanguagesRequest {
+    string domain = 1;
+}
+
+message GetAllLanguagesResponse {
+    repeated LanguageDetail languageList = 1;
+}
+
+message LanguageDetail {
+    string language = 1;
+    string isoCode = 2;
 }
