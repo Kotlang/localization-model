@@ -16,12 +16,12 @@ service LabelLocalization {
 }
 
 message GetAllLabelsByISOCodeRequest {
-    string isocode = 1;
+    string isoCode = 1;
     string domain = 2;
 }
 
 message GetLabelRequest {
-    string isocode = 1;
+    string isoCode = 1;
     string key = 2;
     string domain = 3;
 }
@@ -37,7 +37,7 @@ message LocalizedLabel {
 
 message GetCurrentVersionRequest {
     string domain = 1;
-    string isocode = 2;
+    string isoCode = 2;
 }
 
 message GetCurrentVersionResponse {
